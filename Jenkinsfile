@@ -15,7 +15,7 @@ pipeline {
         }
 
         stage('Customer Build & Test') {
-            when { changeset "customer/**" }
+            // when { changeset "customer/**" }
             steps {
                 echo 'Chạy Build và Unit Test cho Customer Service...'
                 // Thêm flag -Dmaven.test.failure.ignore=true để nếu test fail vẫn chạy tiếp Sonar
@@ -29,7 +29,7 @@ pipeline {
         }
 
         stage('Static Code Analysis (SonarCloud)') {
-            when { changeset "customer/**" }
+            // when { changeset "customer/**" }
             steps {
                 echo 'Đang quét bảo mật với SonarCloud...'
                 withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]) {
