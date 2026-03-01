@@ -14,12 +14,11 @@ pipeline {
             }
         }
 
-        stage('Customer Build & Test') {
+        stage('Customer Service') {
             // when { changeset "customer/**" }
             steps {
-                echo 'Chạy Build và Unit Test cho Customer Service...'
-                // Thêm flag -Dmaven.test.failure.ignore=true để nếu test fail vẫn chạy tiếp Sonar
-                sh 'mvn clean install -pl customer -am -DskipTests'
+                echo 'Phát hiện thay đổi tại Customer Service...'
+                sh 'mvn clean install -pl customer -am'
             }
             post {
                 always {
